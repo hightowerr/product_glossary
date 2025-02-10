@@ -52,7 +52,7 @@ export default function RootLayout({
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 mb-2">
-              <img src="/robot.svg" alt="Logo" className="h-6 w-6" />
+              <img src="/robot.svg" alt="Logo" className="h-12 w-12" />
               <span className="font-medium text-gray-700">Product Glossary AI</span>
             </div>
           </Link>
