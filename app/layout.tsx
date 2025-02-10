@@ -32,7 +32,7 @@ export default function RootLayout({
         <header className="flex justify-between items-center p-4 border-b">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <img src="/robot.svg" alt="Logo" className="h-4 w-4" />
+            <img src="/robot.svg" alt="Logo" className="h-12 w-12" />
             <span className="font-bold text-lg">Product Glossary AI</span>
           </Link>
 
