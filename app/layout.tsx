@@ -32,7 +32,7 @@ export default function RootLayout({
         <header className="flex justify-between items-center p-4 border-b">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <img src="/favicon.ico" alt="Logo" className="h-6 w-6" />
+            <img src="/robot.svg" alt="Logo" className="h-4 w-4" />
             <span className="font-bold text-lg">Product Glossary AI</span>
           </Link>
 
@@ -52,7 +52,7 @@ export default function RootLayout({
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 mb-2">
-              <img src="/favicon.ico" alt="Logo" className="h-6 w-6" />
+              <img src="/robot.svg" alt="Logo" className="h-6 w-6" />
               <span className="font-medium text-gray-700">Product Glossary AI</span>
             </div>
           </Link>
@@ -60,7 +60,7 @@ export default function RootLayout({
           {/* Social Media */}
           <div className="flex space-x-4 mb-2">
             <a
-              href="https://twitter.com/yourprofile"
+              href="https://x.com/omega_eps"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:text-blue-700"
