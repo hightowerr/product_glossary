@@ -32,7 +32,7 @@ export default function RootLayout({
         <header className="flex justify-between items-center p-4 border-b">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <img src="/public/robot.svg" alt="Logo" className="h-4 w-4" />
+            <img src="/robot.svg" alt="Logo" className="h-4 w-4" />
             <span className="font-bold text-lg">Product Glossary AI</span>
           </Link>
 
@@ -52,7 +52,7 @@ export default function RootLayout({
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 mb-2">
-              <img src="/public/robot.svg" alt="Logo" className="h-6 w-6" />
+              <img src="/robot.svg" alt="Logo" className="h-6 w-6" />
               <span className="font-medium text-gray-700">Product Glossary AI</span>
             </div>
           </Link>
