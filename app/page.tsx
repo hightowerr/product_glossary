@@ -1,5 +1,11 @@
 import SearchBar from '@/components/SearchBar';
 import SearchResults from '@/components/SearchResults';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'AI Glossary - Home | Product Terms Explained Simply',
+  description: 'Search and understand product terminology with AI-powered explanations and real-life analogies. Perfect for product managers and tech professionals.',
+};
 
 
 export default function Home() {
