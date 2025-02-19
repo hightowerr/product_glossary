@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "AI Glossary - Product Terms Explained Simply",
-  description: "Your go-to resource for understanding product and tech terminology, explained in plain English with real-life analogies. Perfect for product managers, developers, and tech enthusiasts.",
+  description: "Your guide to product and tech terminology, explained in plain English with real-life analogies. Perfect for product managers and tech professionals.",
   keywords: "AI glossary, product terms, tech terminology, software definitions, product management glossary",
   openGraph: {
     title: "AI Glossary - Product Terms Explained Simply",
