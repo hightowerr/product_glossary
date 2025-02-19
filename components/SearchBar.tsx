@@ -67,11 +67,11 @@ const SearchBar = () => {
     };
 
     return (
-        <div className="w-full max-w-md relative">
+        <div className="w-full max-w-md relative px-2 xs:px-0">
             <input
                 type="text"
                 placeholder="e.g., Algorithm, API, Debugging"
-                className="w-full p-3 border rounded mb-4 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-600 transition-colors"
+                className="w-full p-2 xs:p-3 text-sm xs:text-base border rounded mb-4 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-600 transition-colors"
                 value={searchTerm}
                 onChange={handleInputChange}
             />

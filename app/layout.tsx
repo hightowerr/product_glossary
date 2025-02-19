@@ -52,11 +52,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* Header */}
-        <header className="flex justify-between items-center p-4 border-b bg-white shadow-sm">
+        <header className="flex justify-between items-center p-3 xs:p-4 border-b bg-white shadow-sm">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <img src="/robot.svg" alt="Logo" className="h-12 w-12" />
-            <span className="font-bold text-lg text-gray-900 hover:text-indigo-900">AI Glossary</span>
+            <img src="/robot.svg" alt="Logo" className="h-8 w-8 xs:h-12 xs:w-12" />
+            <span className="font-bold text-base xs:text-lg text-gray-900 hover:text-indigo-900">AI Glossary</span>
           </Link>
 
           {/* Navigation Link */}
