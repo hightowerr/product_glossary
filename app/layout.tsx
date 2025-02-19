@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ai-glossary.vercel.app'),
   title: "AI Glossary - Product Terms Explained Simply",
   description: "Your guide to product and tech terminology, explained in plain English with real-life analogies. Perfect for product managers and tech professionals.",
   keywords: "AI glossary, product terms, tech terminology, software definitions, product management glossary",
