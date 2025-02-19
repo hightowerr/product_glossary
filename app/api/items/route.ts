@@ -5,7 +5,7 @@ import { firestore } from "../utils/admin";
 export async function GET() {
   try {
     const snapshot = await firestore.collection("terms").get();
-    const items: any[] = [];
+    const items: Record<string, unknown>[] = [];
 
     snapshot.forEach((doc) => {
       items.push({ id: doc.id, ...doc.data() });

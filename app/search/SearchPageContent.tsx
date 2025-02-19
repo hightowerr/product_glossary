@@ -45,8 +45,9 @@ export default function SearchPageContent() {
           setResults(items);
           console.log("Fetched items:", items);
         }
-      } catch (e: any) {
-        setError(e.message);
+      } catch (e: unknown) {
+        const errorMessage = e instanceof Error ? e.message : String(e);
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }

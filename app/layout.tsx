@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -67,7 +68,7 @@ export default function RootLayout({
         <header className="flex justify-between items-center p-3 xs:p-4 border-b bg-white shadow-sm">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <img src="/robot.svg" alt="Logo" className="h-8 w-8 xs:h-12 xs:w-12" />
+            <Image src="/robot.svg" alt="Logo" width={32} height={32} className="h-8 w-8 xs:h-12 xs:w-12" />
             <span className="font-bold text-base xs:text-lg text-gray-900 hover:text-indigo-900">AI Glossary</span>
           </Link>
 
@@ -87,7 +88,7 @@ export default function RootLayout({
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 mb-2">
-              <img src="/robot.svg" alt="Logo" className="h-12 w-12" />
+              <Image src="/robot.svg" alt="Logo" width={48} height={48} className="h-12 w-12" />
               <span className="font-medium text-gray-700">AI Glossary</span>
             </div>
           </Link>
