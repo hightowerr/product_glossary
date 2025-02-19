@@ -1,15 +1,46 @@
 "use client";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, query, orderBy, startAt, endAt, getDocs } from 'firebase/firestore';
 import { db } from '@/app/lib/firebase';
 
 const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [suggestions, setSuggestions] = useState<string[]>([]);
+    const debounceTimer = useRef<NodeJS.Timeout | null>(null);
+
+    const fetchSuggestions = async (searchText: string) => {
+        if (searchText.trim() === '') {
+            setSuggestions([]);
+            return;
+        }
+        try {
+            const q = query(
+                collection(db, 'terms'),
+                orderBy('Term'),
+                startAt(searchText),
+                endAt(searchText + "\uf8ff")
+            );
+            const querySnapshot = await getDocs(q);
+            const items = querySnapshot.docs.map(doc => {
+                const data = doc.data();
+                return data.Term as string;
+            });
+            setSuggestions(items);
+        } catch (error) {
+            console.error('Error fetching suggestions:', error);
+            setSuggestions([]);
+        }
+    };
     const router = useRouter();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(event.target.value);
+        const newValue = event.target.value;
+        setSearchTerm(newValue);
+        if (debounceTimer.current) clearTimeout(debounceTimer.current);
+        debounceTimer.current = setTimeout(() => {
+            fetchSuggestions(newValue);
+        }, 300);
     };
 
     const handleSearch = () => {
@@ -36,7 +67,7 @@ const SearchBar = () => {
     };
 
     return (
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-md relative">
             <input
                 type="text"
                 placeholder="e.g., Algorithm, API, Debugging"
@@ -44,6 +75,23 @@ const SearchBar = () => {
                 value={searchTerm}
                 onChange={handleInputChange}
             />
+            {suggestions.length > 0 && (
+                <ul className="absolute z-10 bg-white border border-gray-300 w-full mt-1 max-h-60 overflow-auto">
+                    {suggestions.map((suggestion, index) => (
+                        <li
+                            key={index}
+                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            onClick={() => {
+                                setSearchTerm(suggestion);
+                                setSuggestions([]);
+                                router.push(`/search?term=${encodeURIComponent(suggestion.trim())}`);
+                            }}
+                        >
+                            {suggestion}
+                        </li>
+                    ))}
+                </ul>
+            )}
             <div className="flex justify-between">
                 <button
                     className="w-[48%] bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
