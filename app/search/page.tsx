@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 
-export const generateMetadata = async ({
+export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: { term: string };
-}): Promise<Metadata> => {
-  const term = searchParams.term || '';
+  searchParams: Record<string, string | undefined>;
+}): Promise<Metadata> {
+  const term = searchParams.term ?? "";
   const fullTitle = `${term} - AI Glossary Definition and Examples`;
   // Ensure the title does not exceed 60 characters
   const safeTitle = fullTitle.length > 60 ? fullTitle.substring(0, 60) : fullTitle;
@@ -13,7 +13,7 @@ export const generateMetadata = async ({
     title: safeTitle,
     description: `Learn about ${term} with simple explanations, real-life analogies, and practical examples. Part of our comprehensive tech glossary.`,
   };
-};
+}
 
 import SearchPageContent from "./SearchPageContent";
 
