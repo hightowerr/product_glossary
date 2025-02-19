@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { firestore } from "../utils/admin";
 
 // GET Request: Fetch all items from Firestore
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const snapshot = await firestore.collection("terms").get();
     const items: any[] = [];
@@ -19,9 +19,9 @@ export async function GET(req: NextRequest) {
 }
 
 // POST Request: Add a new item to Firestore
-export async function POST(req: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
-    const body = await req.json(); // Parse the request body
+    const body = await request.json(); // Parse the request body
     const { Term, Definition, Examples, "Real-Life Analogy": RealLifeAnalogy } = body;
 
     if (!Term || !Definition || !Examples || !RealLifeAnalogy) {
