@@ -52,40 +52,29 @@ export default function GlossaryPage() {
   return (
     <main className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6 text-indigo-600">Product Terms Glossary</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {terms.length === 0 && (
-          <p className="text-gray-500 col-span-full">No terms found</p>
-        )}
-        {terms.map((term) => (
-          <div 
-            key={term.id}
-            className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-gray-200 hover:border-indigo-200"
-          >
-            <Link 
-              href={`/search?term=${encodeURIComponent(term.Term)}`}
-              className="block"
-            >
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
-                  {term.Term}
-                </h2>
-                <svg 
-                  className="w-4 h-4 text-gray-400" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </div>
-            </Link>
-          </div>
-        ))}
+      <div className="space-y-6">
+        {Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ").map((letter) => {
+          const letterTerms = terms.filter((term) => term.Term[0].toUpperCase() === letter);
+          return (
+            <div key={letter}>
+              <h2 className="text-xl font-semibold text-gray-900">{letter}</h2>
+              {letterTerms.length > 0 && (
+                <ul className="ml-4 mt-2 space-y-1">
+                  {letterTerms.map((term) => (
+                    <li key={term.id}>
+                      <Link
+                        href={`/search?term=${encodeURIComponent(term.Term)}`}
+                        className="text-gray-900 hover:text-indigo-900"
+                      >
+                        {term.Term}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        })}
       </div>
     </main>
   );
