@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { collection, query, orderBy, startAt, endAt, getDocs } from 'firebase/firestore';
 import { db } from '@/app/lib/firebase';
 
-const SearchBar = () => {
+const SearchBar = (): JSX.Element => {
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const debounceTimer = useRef<NodeJS.Timeout | null>(null);
@@ -27,7 +27,7 @@ const SearchBar = () => {
                 return data.Term as string;
             });
             setSuggestions(items);
-        } catch (error) {
+        } catch (error: unknown) {
             console.error('Error fetching suggestions:', error);
             setSuggestions([]);
         }
@@ -61,8 +61,8 @@ const SearchBar = () => {
                 
                 router.push(`/search?term=${encodeURIComponent(randomTerm)}`);
             }
-        } catch (error) {
-            console.error("Error fetching random term:", error);
+        } catch (error: unknown) {
+            console.error("Error fetching random term:", error); // eslint-disable-line no-console
         }
     };
 

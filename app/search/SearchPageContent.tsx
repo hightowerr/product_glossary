@@ -14,7 +14,7 @@ interface TermData {
   Examples: string;
 }
 
-export default function SearchPageContent() {
+export default function SearchPageContent(): JSX.Element {
   const [results, setResults] = useState<TermData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -43,7 +43,7 @@ export default function SearchPageContent() {
           setError("No results found.");
         } else {
           setResults(items);
-          console.log("Fetched items:", items);
+          console.log("Fetched items:", items); // eslint-disable-line no-console
         }
       } catch (e: unknown) {
         const errorMessage = e instanceof Error ? e.message : String(e);

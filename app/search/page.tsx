@@ -19,6 +19,6 @@ export async function generateMetadata({
 
 import SearchPageContent from "./SearchPageContent";
 
-export default function SearchPage() {
+export default function SearchPage(): JSX.Element {
   return <SearchPageContent />;
 }
