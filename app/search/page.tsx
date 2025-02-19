@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Record<string, string | undefined>;
+  searchParams: URLSearchParams;
 }): Promise<Metadata> {
-  const term = searchParams.term ?? "";
+  const term = searchParams.get("term") ?? "";
   const fullTitle = `${term} - AI Glossary Definition and Examples`;
   // Ensure the title does not exceed 60 characters
   const safeTitle = fullTitle.length > 60 ? fullTitle.substring(0, 60) : fullTitle;
