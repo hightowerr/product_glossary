@@ -51,11 +51,13 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="author" content="Your Organization or Name" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />  
+        <meta name="author" content="Jam11" />
         <meta name="keywords" content="AI glossary, product terms, tech terminology, software definitions, product management glossary" />
-        <meta name="description" content="Your guide to product and tech terminology, explained in plain English with real-life analogies. Perfect for product managers and tech professionals." />
-        <title>AI Glossary - Product Terms Explained Simply</title>
+        <meta name="description" content="Your guide to Artificial Intelligence (AI) terminology, explained in plain English with real-life analogies. Perfect for product managers and tech professionals." />
+        <meta name="author" content="Yink" />
+        <link rel="icon" type="image/ico" href="/favicon.ico" />
+        <title>AI Glossary - AI Terms Explained Simply</title>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
