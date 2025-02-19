@@ -3,11 +3,10 @@ import type { Metadata } from 'next';
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: URLSearchParams | Record<string, string | undefined>;
+  searchParams: Promise<URLSearchParams>;
 }): Promise<Metadata> {
   const sp = await searchParams;
-  const term =
-    typeof sp.get === "function" ? sp.get("term") ?? "" : sp.term ?? "";
+  const term = sp.get("term") ?? "";
   const fullTitle = `${term} - AI Glossary Definition and Examples`;
   // Ensure the title does not exceed 60 characters
   const safeTitle =
