@@ -51,7 +51,7 @@ export default function GlossaryPage() {
 
   return (
     <main className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800">Product Terms Glossary</h1>
+      <h1 className="text-3xl font-bold mb-6 text-indigo-600">Product Terms Glossary</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {terms.length === 0 && (
           <p className="text-gray-500 col-span-full">No terms found</p>
@@ -59,14 +59,14 @@ export default function GlossaryPage() {
         {terms.map((term) => (
           <div 
             key={term.id}
-            className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200"
+            className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-gray-200 hover:border-indigo-200"
           >
             <Link 
               href={`/search?term=${encodeURIComponent(term.Term)}`}
               className="block"
             >
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold text-blue-600 hover:text-blue-800">
+                <h2 className="text-lg font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
                   {term.Term}
                 </h2>
                 <svg 
