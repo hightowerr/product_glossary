@@ -33,7 +33,7 @@ export default function RootLayout({
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <img src="/robot.svg" alt="Logo" className="h-12 w-12" />
-            <span className="font-bold text-lg">Product Glossary AI</span>
+            <span className="font-bold text-lg">AI Glossary</span>
           </Link>
 
           {/* Navigation Link */}
@@ -53,7 +53,7 @@ export default function RootLayout({
           <Link href="/">
             <div className="flex items-center space-x-2 mb-2">
               <img src="/robot.svg" alt="Logo" className="h-12 w-12" />
-              <span className="font-medium text-gray-700">Product Glossary AI</span>
+              <span className="font-medium text-gray-700">AI Glossary</span>
             </div>
           </Link>
 
