@@ -71,7 +71,7 @@ const SearchBar = () => {
             <input
                 type="text"
                 placeholder="e.g., Algorithm, API, Debugging"
-                className="w-full p-3 border rounded mb-4"
+                className="w-full p-3 border rounded mb-4 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-600 transition-colors"
                 value={searchTerm}
                 onChange={handleInputChange}
             />
@@ -94,13 +94,13 @@ const SearchBar = () => {
             )}
             <div className="flex justify-between">
                 <button
-                    className="w-[48%] bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                    className="w-[48%] bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition-colors"
                     onClick={handleSearch}
                 >
                     Search
                 </button>
                 <button 
-                    className="w-[48%] bg-gray-200 text-blue-500 py-2 rounded hover:bg-gray-300"
+                    className="w-[48%] bg-gray-200 text-indigo-600 py-2 rounded hover:bg-gray-300 transition-colors"
                     onClick={handleFeelingLucky}
                 >
                     Feeling Lucky

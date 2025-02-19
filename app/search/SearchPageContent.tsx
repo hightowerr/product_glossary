@@ -55,7 +55,7 @@ export default function SearchPageContent() {
   }, [term]);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-2xl font-bold my-4">Search Results for: {term}</h1>
         {loading && <p className="text-gray-600">Loading...</p>}
