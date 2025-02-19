@@ -14,7 +14,7 @@ export default function Home() {
       {/* Title and Description */}
       <h1 className="text-4xl font-bold text-indigo-600 mb-4">AI Glossary</h1>
       <p className="text-gray-600 text-center mb-8 max-w-2xl">
-        Your go-to resource for understanding product terminology! <br />
+        Your go-to resource for understanding AI terminology! <br />
         Key product terms explained by AI in plain English (with Real-Life analogies).
       </p>
 
