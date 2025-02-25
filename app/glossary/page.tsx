@@ -37,7 +37,11 @@ export default function GlossaryPage() {
         setTerms(termsList);
       } catch (err) {
         console.error('Error fetching terms:', err);
-        setError(`Failed to load terms: ${err.message}`); // More detailed error message
+        if (err instanceof Error) {
+          setError(`Failed to load terms: ${err.message}`);
+        } else {
+          setError('Failed to load terms: Unknown error');
+        }
       } finally {
         setLoading(false);
       }
@@ -51,7 +55,7 @@ export default function GlossaryPage() {
 
   return (
     <main className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-indigo-600">Product Terms Glossary</h1>
+      <h1 className="text-3xl font-bold mb-6 text-gray-900 hover:text-indigo-900">Product Terms Glossary</h1>
       <div className="space-y-6">
         {Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ").map((letter) => {
           const letterTerms = terms.filter((term) => term.Term[0].toUpperCase() === letter);

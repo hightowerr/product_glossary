@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { collection, query, orderBy, startAt, endAt, getDocs } from 'firebase/firestore';
 import { db } from '@/app/lib/firebase';
 
-const SearchBar = (): JSX.Element => {
+const SearchBar = (): React.ReactElement => {
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const debounceTimer = useRef<NodeJS.Timeout | null>(null);

@@ -10,11 +10,11 @@ interface TermData {
   id: string;
   Term: string;
   Definition: string;
-  RealTimeAnalogy: string;
+  "Real-Life Analogy": string;
   Examples: string;
 }
 
-export default function SearchPageContent(): JSX.Element {
+export default function SearchPageContent() {
   const [results, setResults] = useState<TermData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -35,10 +35,10 @@ export default function SearchPageContent(): JSX.Element {
           where("Term", "==", term.trim())
         );
         const querySnapshot = await getDocs(q);
-        const items = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...(doc.data() as TermData),
-        }));
+        const items = querySnapshot.docs.map((doc) => {
+          const data = doc.data() as Omit<TermData, "id">;
+          return { id: doc.id, ...data };
+        });
         if (items.length === 0) {
           setError("No results found.");
         } else {
@@ -76,7 +76,7 @@ export default function SearchPageContent(): JSX.Element {
               </p>
               <p className="mb-3">
                 <strong>Real-Life Analogy:</strong>{" "}
-                {result.RealTimeAnalogy || result["Real-Life Analogy"]}
+                {result["Real-Life Analogy"]}
               </p>
               <p>
                 <strong>Examples:</strong> {result.Examples}

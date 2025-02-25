@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import React, { Suspense } from 'react';
 
 export async function generateMetadata({
   searchParams,
@@ -7,7 +8,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const sp = await searchParams;
   const term =
-    typeof sp.get === "function" ? sp.get("term") ?? "" : sp.term ?? "";
+    typeof sp.get === "function" ? sp.get("term") ?? "" : (sp as Record<string, string | undefined>)["term"] ?? "";
   const fullTitle = `${term} - AI Glossary Definition and Examples`;
   // Ensure the title does not exceed 60 characters
   const safeTitle =
@@ -20,6 +21,10 @@ export async function generateMetadata({
 
 import SearchPageContent from "./SearchPageContent";
 
-export default function SearchPage(): JSX.Element {
-  return <SearchPageContent />;
+export default function SearchPage(): React.ReactElement {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchPageContent />
+    </Suspense>
+  );
 }
