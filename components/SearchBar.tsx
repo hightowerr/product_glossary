@@ -67,40 +67,43 @@ const SearchBar = (): React.ReactElement => {
     };
 
     return (
-        <div className="w-full max-w-md relative px-2 xs:px-0">
-            <input
-                type="text"
-                placeholder="e.g., Algorithm, API, Debugging"
-                className="w-full p-2 xs:p-3 text-sm xs:text-base border rounded mb-4 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-600 transition-colors"
-                value={searchTerm}
-                onChange={handleInputChange}
-            />
-            {suggestions.length > 0 && (
-                <ul className="absolute z-10 bg-white border border-gray-300 w-full mt-1 max-h-60 overflow-auto">
-                    {suggestions.map((suggestion, index) => (
-                        <li
-                            key={index}
-                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                            onClick={() => {
-                                setSearchTerm(suggestion);
-                                setSuggestions([]);
-                                router.push(`/search?term=${encodeURIComponent(suggestion.trim())}`);
-                            }}
-                        >
-                            {suggestion}
-                        </li>
-                    ))}
-                </ul>
-            )}
-            <div className="flex justify-between">
+        <div className="w-full relative">
+            <div className="relative">
+                <input
+                    type="text"
+                    placeholder="e.g., Algorithm, API, Debugging"
+                    className="w-full p-2 sm:p-3 text-sm sm:text-base border rounded-lg mb-4 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-600 transition-colors shadow-sm"
+                    value={searchTerm}
+                    onChange={handleInputChange}
+                    aria-label="Search terms"
+                />
+                {suggestions.length > 0 && (
+                    <ul className="absolute z-10 bg-white border border-gray-300 rounded-lg w-full mt-1 max-h-60 overflow-auto shadow-md">
+                        {suggestions.map((suggestion, index) => (
+                            <li
+                                key={index}
+                                className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm sm:text-base"
+                                onClick={() => {
+                                    setSearchTerm(suggestion);
+                                    setSuggestions([]);
+                                    router.push(`/search?term=${encodeURIComponent(suggestion.trim())}`);
+                                }}
+                            >
+                                {suggestion}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                 <button
-                    className="w-[48%] bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition-colors"
+                    className="w-full sm:w-1/2 bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm sm:text-base font-medium"
                     onClick={handleSearch}
                 >
                     Search
                 </button>
                 <button 
-                    className="w-[48%] bg-gray-200 text-indigo-600 py-2 rounded hover:bg-gray-300 transition-colors"
+                    className="w-full sm:w-1/2 bg-gray-200 text-indigo-600 py-2 rounded-lg hover:bg-gray-300 transition-colors text-sm sm:text-base font-medium"
                     onClick={handleFeelingLucky}
                 >
                     Feeling Lucky
