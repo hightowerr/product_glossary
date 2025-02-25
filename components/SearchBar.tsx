@@ -82,7 +82,7 @@ const SearchBar = (): React.ReactElement => {
                         {suggestions.map((suggestion, index) => (
                             <li
                                 key={index}
-                                className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm sm:text-base"
+                                className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm sm:text-base text-black"
                                 onClick={() => {
                                     setSearchTerm(suggestion);
                                     setSuggestions([]);
