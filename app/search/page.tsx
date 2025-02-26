@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import React, { Suspense } from 'react';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Promise<URLSearchParams | Record<string, string | undefined>>;
+  searchParams: { [key: string]: string | string[] | undefined }
 }): Promise<Metadata> {
-  const sp = await searchParams;
-  const term =
-    typeof sp.get === "function" ? sp.get("term") ?? "" : (sp as Record<string, string | undefined>)["term"] ?? "";
+  const term = searchParams.term as string ?? "";
   const fullTitle = `${term} - AI Glossary Definition and Examples`;
   // Ensure the title does not exceed 60 characters
   const safeTitle =

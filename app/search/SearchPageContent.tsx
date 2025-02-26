@@ -56,37 +56,39 @@ export default function SearchPageContent() {
   }, [term]);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 xs:p-6">
+    <div className="min-h-screen bg-white p-4 sm:p-6 md:p-8">
       <div className="w-full max-w-3xl mx-auto">
-        <h1 className="text-2xl font-bold my-4">Search Results for: {term}</h1>
-        {loading && <p className="text-gray-600">Loading...</p>}
-        {error && <p className="text-red-500">{error}</p>}
+        <h1 className="text-2xl sm:text-3xl font-bold my-4 text-indigo-600">Search Results for: {term}</h1>
+        {loading && <p className="text-gray-800 font-medium text-center">Loading...</p>}
+        {error && <p className="text-red-600 font-medium text-center">{error}</p>}
         {!loading &&
           !error &&
           results.map((result) => (
             <div
               key={result.id}
-              className="bg-white p-6 rounded-lg shadow-md mb-4"
+              className="bg-white p-4 sm:p-6 rounded-lg shadow-md mb-4 border border-gray-200"
             >
-              <h2 className="text-xl font-bold text-gray-900 mb-2">
+              <h2 className="text-xl font-bold text-indigo-800 mb-2">
                 {result.Term}
               </h2>
-              <p className="mb-3">
-                <strong>Definition:</strong> {result.Definition}
+              <p className="mb-3 text-sm sm:text-base text-gray-900 font-medium">
+                <strong className="text-gray-900">Definition:</strong> {result.Definition}
               </p>
-              <p className="mb-3">
-                <strong>Real-Life Analogy:</strong>{" "}
+              <p className="mb-3 text-sm sm:text-base text-gray-900 font-medium">
+                <strong className="text-gray-900">Real-Life Analogy:</strong>{" "}
                 {result["Real-Life Analogy"]}
               </p>
-              <p>
-                <strong>Examples:</strong> {result.Examples}
+              <p className="text-sm sm:text-base text-gray-900 font-medium">
+                <strong className="text-gray-900">Examples:</strong> {result.Examples}
               </p>
             </div>
           ))}
 
         {/* SearchBar centered on the page */}
         <div className="flex justify-center mt-6">
-          <SearchBar />
+          <div className="w-full max-w-md">
+            <SearchBar />
+          </div>
         </div>
       </div>
     </div>

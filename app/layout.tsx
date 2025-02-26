@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -49,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -61,38 +57,66 @@ export default function RootLayout({
         <link rel="icon" type="image/ico" href="/favicon.ico" />
         <title>AI Glossary - AI Terms Explained Simply</title>
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="font-sans antialiased min-h-screen flex flex-col bg-gray-50">
         {/* Header */}
-        <header className="flex justify-between items-center p-3 xs:p-4 border-b bg-white shadow-sm">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/robot.svg" alt="Logo" width={32} height={32} className="h-8 w-8 xs:h-12 xs:w-12" />
-            <span className="font-bold text-base xs:text-lg text-gray-900 hover:text-indigo-900">AI Glossary</span>
-          </Link>
+        <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+          <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              {/* Logo */}
+              <Link href="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
+                <Image 
+                  src="/robot.svg" 
+                  alt="Logo" 
+                  width={32} 
+                  height={32} 
+                  className="w-8 h-8 sm:w-9 sm:h-9"
+                />
+                <span className="font-semibold text-base sm:text-lg md:text-xl text-gray-900">
+                  AI Glossary
+                </span>
+              </Link>
 
-          {/* Navigation Link */}
-          <nav>
-            <Link href="/glossary" className="text-sm font-medium text-gray-900 hover:text-indigo-900 transition-colors">
-              Glossary
-            </Link>
-          </nav>
+              {/* Navigation */}
+              <nav className="flex items-center space-x-4 md:space-x-6">
+                <Link 
+                  href="/glossary" 
+                  className="text-sm md:text-base font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                >
+                  Glossary
+                </Link>
+              </nav>
+            </div>
+          </div>
         </header>
 
         {/* Main Content */}
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow">
+          <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
+            {children}
+          </div>
+        </main>
 
         {/* Footer */}
-        <footer className="flex flex-col items-center p-4 border-t">
-          {/* Logo */}
-          <Link href="/">
-            <div className="flex items-center space-x-2 mb-2">
-              <Image src="/robot.svg" alt="Logo" width={48} height={48} className="h-12 w-12" />
-              <span className="font-medium text-gray-700">AI Glossary</span>
+        <footer className="bg-white border-t border-gray-200">
+          <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
+            <div className="flex flex-col items-center">
+              <Link href="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
+                <Image 
+                  src="/robot.svg" 
+                  alt="Logo" 
+                  width={36} 
+                  height={36} 
+                  className="w-8 h-8 sm:w-9 sm:h-9"
+                />
+                <span className="font-medium text-gray-900">
+                  AI Glossary
+                </span>
+              </Link>
+              <p className="mt-4 text-sm text-gray-500">
+                Your guide to AI terminology, explained simply
+              </p>
             </div>
-          </Link>
-
+          </div>
         </footer>
       </body>
     </html>
